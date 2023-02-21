@@ -11,10 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Login to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.REGISTRY_USER }}
-          password: ${{ secrets.REGISTRY_PASS }}
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and push image
         run: |
           docker build -t rlsbezerra/ci-cd:1.0.0 app/.

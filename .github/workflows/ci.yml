@@ -18,4 +18,4 @@ jobs:
           context: .
           file: ./app/
           push: true
-          tags: rlsbezerra/ci-cd:1.0.0
+          tags: rosemberglima/ci-cd:1.0.0

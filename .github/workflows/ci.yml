@@ -10,8 +10,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Set up Docker CLI
+        env:
+          DOCKER_CLI_EXPERIMENTAL: enabled
+        run: |
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: Build and push image
         run: |
           docker build -t rlsbezerra/ci-cd:1.0.0 app/.

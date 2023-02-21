@@ -15,7 +15,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build and push image
-        run: |
-          docker build -t rlsbezerra/ci-cd:1.0.0 app/.
-          docker push rlsbezerra/ci-cd:1.0.0
+          context: .
+          file: ./app/
+          push: true
+          tags: rlsbezerra/ci-cd:1.0.0
